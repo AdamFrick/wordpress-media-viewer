@@ -1,14 +1,14 @@
 <template>
   <div class="input">
-    <button @click="fetchPrev()">
+    <button @click="fetchPrev">
       Prev
     </button>
     <input
       v-model.number="state.page"
       type="number"
-      @keyup.enter="fetchMedia()"
+      @keyup.enter="fetchMedia"
     >
-    <button @click="fetchNext()">
+    <button @click="fetchNext">
       Next
     </button>
   </div>

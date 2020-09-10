@@ -18,7 +18,7 @@ const fetchMedia = async (settings) => {
   return response;
 };
 
-export const authStore = readonly({
+export const mediaStore = readonly({
   state,
   fetchMedia
 });
