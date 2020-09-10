@@ -13,8 +13,8 @@
 <script>
 import { provide } from "vue";
 
-import Images from "./components/Images.vue";
-import Inputs from "./components/Inputs.vue";
+import Images from "@/components/Images.vue";
+import Inputs from "@/components/Inputs.vue";
 import { mediaStore } from "@/store/_index.js";
 
 export default {
