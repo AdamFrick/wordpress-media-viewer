@@ -2,7 +2,7 @@
   <div>
     <div class="images">
       <div
-        v-for="image in state.images"
+        v-for="image in media.state.images"
         :key="image.id"
         class="image"
       >
@@ -25,22 +25,23 @@
   </div>
 </template>
 <script>
-import { reactive, inject } from "vue";
+import { inject } from "vue";
 
 export default {
   name: "Images",
   inject: ["media"],
   setup() {
     const media = inject("media");
-    const state = reactive({
-      images: media.images
-    });
+
     function hasThumbnail(thumb) {
-      return typeof thumb.media_details.sizes !== "undefined" && typeof thumb.media_details.sizes.medium !== "undefined";
+      return (
+        typeof thumb.media_details.sizes !== "undefined" &&
+        typeof thumb.media_details.sizes.medium !== "undefined"
+      );
     }
 
-    return { state, hasThumbnail };
-  }
+    return { media, hasThumbnail };
+  },
 };
 </script>
 <style scoped>
@@ -48,8 +49,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  max-width:100%;
-  max-height:200px;
+  max-width: 100%;
+  max-height: 200px;
 }
 .image img {
   height: 230px;
