@@ -1,16 +1,43 @@
 <template>
   <div class="input">
-    <button @click="fetchPrev">
-      Prev
-    </button>
-    <input
-      v-model.number="state.page"
-      type="number"
-      @keyup.enter="fetchMedia"
-    >
-    <button @click="fetchNext">
-      Next
-    </button>
+    <div class="prev-button">
+      <button
+        @click="fetchPrev"
+        @keyup.left="fetchPrev"
+      >
+        Prev
+      </button>
+    </div>
+    <div class="input-fields">
+      <label for="uri">URI:</label><br>
+      <input
+        id="uri"
+        v-model="state.uri"
+        @keyup.enter="fetchMedia"
+      ><br><br>
+      <label for="uri">Page:</label><br>
+      <input
+        id="page"
+        v-model.number="state.page"
+        type="number"
+        @keyup.enter="fetchMedia"
+      ><br>
+      <input
+        id="cors"
+        v-model="state.cors"
+        type="checkbox"
+        @change="fetchMedia"
+      >
+      <label for="cors">Add CORS</label>
+    </div>
+    <div class="next-button">
+      <button
+        @click="fetchNext"
+        @keyup.right="fetchNext"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </template>
 <script>
@@ -25,7 +52,7 @@ export default {
       uri: "https://members.kelbyone.com",
       page: 1,
       perPage: 15,
-      order: "asc",
+      order: "desc",
       mediaType: "image",
       cors: false,
     });
@@ -63,7 +90,15 @@ export default {
 <style scoped>
 button {
   font-size: 24px;
-  line-height: 48px;
   margin: 2em;
+}
+.prev-button,
+.next-button,
+.input-fields {
+
+}
+.input {
+  display: flex;
+  justify-content: center;
 }
 </style>
