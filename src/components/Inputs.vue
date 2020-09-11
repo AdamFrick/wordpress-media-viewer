@@ -55,6 +55,9 @@ export default {
 
     return { state, fetchMedia, fetchNext, fetchPrev };
   },
+  created() {
+    this.fetchMedia();
+  },
 };
 </script>
 <style scoped>
