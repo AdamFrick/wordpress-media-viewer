@@ -25,9 +25,9 @@ export default {
       uri: "https://members.kelbyone.com",
       page: 1,
       perPage: 15,
-      order: "desc",
+      order: "asc",
       mediaType: "image",
-      cors: true
+      cors: false,
     });
     const fetchMedia = async function() {
       const { uri, page, perPage, order, mediaType, cors } = state;
@@ -37,7 +37,7 @@ export default {
         perPage,
         order,
         mediaType,
-        cors
+        cors,
       });
       if ("error" === response.status) {
         state.error = response.data;
@@ -54,7 +54,10 @@ export default {
     }
 
     return { state, fetchMedia, fetchNext, fetchPrev };
-  }
+  },
+  created() {
+    this.fetchMedia();
+  },
 };
 </script>
 <style scoped>
